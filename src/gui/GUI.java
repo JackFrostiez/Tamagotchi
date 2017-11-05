@@ -7,10 +7,12 @@ import javax.swing.JFrame;
 
 public class GUI {
 
+	Canvas canvas;
+	
 	public GUI() {
 		JFrame frame = new JFrame("Tamagotchi");
 		
-		Canvas canvas = new Canvas();
+		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(350,350));
 		
 		frame.setSize(350, 350);
@@ -18,6 +20,10 @@ public class GUI {
 		frame.setVisible(true);
 		frame.add(canvas);
 		frame.pack();
+	}
+	
+	public Canvas getCanvas(){
+		return canvas;
 	}
 
 }
