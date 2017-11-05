@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import graphics.Assets;
+import graphics.ImageLoader;
 import gui.GUI;
 
 public class Game implements Runnable{
@@ -25,9 +27,11 @@ public class Game implements Runnable{
 		interf = ImageLoader.loadImage("/textures/interface.png");
 		home = ImageLoader.loadImage("/textures/home.png");
 		tamagotchi = ImageLoader.loadImage("/textures/tamagotchi.jpg");
+		Assets.init();
 	}
 	
 	private void tick(){
+		
 		
 	}
 	
@@ -44,7 +48,9 @@ public class Game implements Runnable{
 		//DRAWING
 		g.drawImage(interf, 0, 0, null);
 		g.drawImage(home, 0, 60, null);
-		g.drawImage(tamagotchi, 35, 70, null);
+		
+		
+		g.drawImage(Assets.baby, 70, 100, 175, 175 , null);
 		
 		//COORDINATES FOR BUTTON IMPLEMENTATION
 /*		g.drawRect(2, 2, 86, 55);
@@ -65,9 +71,33 @@ public class Game implements Runnable{
 	public void run() {
 		init();
 		
+		int fps = 60; 
+		double timePerTick = 1000000000 / fps;
+		double delta = 0;
+		long now;
+		long lastTime = System.nanoTime();
+		long timer = 0;
+		int ticks = 0;
+		
+		
 		while(running){
-			tick();
-			render();
+			now = System.nanoTime();
+			delta += (now - lastTime) / timePerTick; 
+			timer += now - lastTime;
+			lastTime = now;
+			
+			if(delta >= 1) {
+				tick();
+				render();
+				ticks++;
+				delta --;
+			}
+			if(timer >= 1000000000){
+				System.out.println("Ticks and Frames: " + ticks);
+				ticks = 0;
+				timer = 0;
+				
+			}
 		}
 		stop();
 	}
