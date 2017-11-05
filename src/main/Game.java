@@ -18,7 +18,6 @@ public class Game implements Runnable{
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	private BufferedImage tamagotchi;
 	private BufferedImage interf;
 	private BufferedImage home;
 	
@@ -26,7 +25,6 @@ public class Game implements Runnable{
 		gui = new GUI();
 		interf = ImageLoader.loadImage("/textures/interface.png");
 		home = ImageLoader.loadImage("/textures/home.png");
-		tamagotchi = ImageLoader.loadImage("/textures/tamagotchi.jpg");
 		Assets.init();
 	}
 	
