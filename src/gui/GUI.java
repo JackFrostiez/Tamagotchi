@@ -6,14 +6,16 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class GUI {
-
-	Canvas canvas;
+	
+	private JFrame frame;
+	private Canvas canvas;
 	
 	public GUI() {
-		JFrame frame = new JFrame("Tamagotchi");
+		frame = new JFrame("Tamagotchi");
 		
 		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(350,350));
+		
 		
 		frame.setSize(350, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

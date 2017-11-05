@@ -16,12 +16,14 @@ public class Game implements Runnable{
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	//just a test so delete this
 	private BufferedImage tamagotchi;
+	private BufferedImage interf;
+	private BufferedImage home;
 	
 	private void init(){
 		gui = new GUI();
-		//just a test so delete the tamagotchi
+		interf = ImageLoader.loadImage("/textures/interface.png");
+		home = ImageLoader.loadImage("/textures/home.png");
 		tamagotchi = ImageLoader.loadImage("/textures/tamagotchi.jpg");
 	}
 	
@@ -39,12 +41,22 @@ public class Game implements Runnable{
 		//clear screen
 		g.clearRect(0, 0, 350, 350);
 		
-		//drawing
+		//DRAWING
+		g.drawImage(interf, 0, 0, null);
+		g.drawImage(home, 0, 60, null);
+		g.drawImage(tamagotchi, 35, 70, null);
 		
-		//drawing this image here was just a test so remove this
-		g.drawImage(tamagotchi, 50, 50, null);
-		
-		//end drawing
+		//COORDINATES FOR BUTTON IMPLEMENTATION
+/*		g.drawRect(2, 2, 86, 55);
+		g.drawRect(180, 2, 86, 55);
+	top	g.drawRect(183, 2, 80, 55);
+		g.drawRect(267, 2, 80, 55);
+*/		
+/*		g.drawRect(2, 290, 86, 59);
+		g.drawRect(91, 290, 87, 60);
+	bot	g.drawRect(180, 290, 86, 60);
+		g.drawRect(265, 290, 84, 60);
+*/		//end drawing
 		bs.show();
 		g.dispose();
 	}
